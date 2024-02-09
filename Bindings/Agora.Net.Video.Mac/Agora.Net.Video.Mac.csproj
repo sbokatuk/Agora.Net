@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Version>4.2.6.8</Version>
+    <authors>s.bokatuk</authors>
+    <owners>s.bokatuk</owners>
+    <title>Xamarin bindings to the native Mac Agora Video SDK.</title>
+    <description>MAUI Mac Xamarin bindings for Agora Video SDK for Mac. The Agora Video Mac SDK lets you use audio sessions in apps you build for Mac.</description>
+    <summary>Xamarin Video Agora Mac SDK, see agora.io</summary>
+    <tags>Agora Tokbox Video SDK Xamarin Mac Xamarin.Mac MAUI MAUI.Mac .Net Binding VideoCall WebRTC</tags>
+    <projectUrl>https://github.com/sbokatuk/Agora.Net</projectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageId>Agora.Net.Video.Mac</PackageId>
+    <AssemblyName>Agora.Net.Video.Mac</AssemblyName>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <ReleaseVersion>4.2.6.1</ReleaseVersion>
+    <TargetFramework>net8.0-maccatalyst</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <IsBindingProject>true</IsBindingProject>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+  </ItemGroup>
+</Project>
