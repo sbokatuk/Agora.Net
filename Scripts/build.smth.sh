@@ -1,7 +1,7 @@
 #!/bin/sh
 
-
-# ./Scripts/build.${smth}.sh VERSION="4.2.6" IOSVERSION="4.2.6" ANDROIDVERSION="4.2.6" BUILD="1-beta1" MACVERSION="4.2.6" NMSC="Net.Agora.Video"
+#GITHUB="https://github.com/sbokatuk/Net.Agora" VENDOR="Agora" DDD="MediaplayerKit" SITE="https://www.agora.io/en/" BUILD="1" smth="mk" VERSION="1.3.0" IOSVERSION="1.3.0" ANDROIDVERSION="1.3.0" MACVERSION="1.3.0" NMSC="Net.Agora.MediaplayerKit" 
+# ./Scripts/build.smth.sh BUILD="1-beta1" smth="iw" VERSION="2.16.62" IOSVERSION="2.16.62" ANDROIDVERSION="2.16.59" MACVERSION="2.16.62" NMSC="Net.Agora.InteractiveWhiteboard"  
 for ARGUMENT in "$@"
 do
    KEY=$(echo $ARGUMENT | cut -f1 -d=)
