@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-# ./Scripts/build.voice.sh VERSION="4.2.6" IOSVERSION="4.2.6" ANDROIDVERSION="4.2.6" BUILD="1-beta1" MACVERSION="4.2.6" NMSC="Net.Agora.Video"
+# ./Scripts/build.${smth}.sh VERSION="4.2.6" IOSVERSION="4.2.6" ANDROIDVERSION="4.2.6" BUILD="1-beta1" MACVERSION="4.2.6" NMSC="Net.Agora.Video"
 for ARGUMENT in "$@"
 do
    KEY=$(echo $ARGUMENT | cut -f1 -d=)
@@ -24,9 +24,9 @@ sed -E -i "" "s/<Version>([0-9]{1,}\.)+[0-9]{1,}/<Version>$IOSVERSION.8/" Bindin
 sed -E -i "" "s/<TargetFramework>net([0-9]{1,}\.)+[0-9]{1,}-ios/<TargetFramework>net8.0-ios/" Bindings/$NMSC.iOS/$NMSC.iOS.csproj
 dotnet pack Bindings/$NMSC.iOS/$NMSC.iOS.csproj --output NugetPackages --force --verbosity quiet --property WarningLevel=0 /clp:ErrorsOnly
 cd NugetPackages
-rm -rf voiceios
-unzip -n -q $NMSC.iOS.$IOSVERSION.7.nupkg -d voiceios
-unzip -n -q $NMSC.iOS.$IOSVERSION.8.nupkg -d voiceios
+rm -rf ${smth}ios
+unzip -n -q $NMSC.iOS.$IOSVERSION.7.nupkg -d ${smth}ios
+unzip -n -q $NMSC.iOS.$IOSVERSION.8.nupkg -d ${smth}ios
 rm $NMSC.iOS.$IOSVERSION.7.nupkg
 rm $NMSC.iOS.$IOSVERSION.8.nupkg
 cd ..
@@ -39,9 +39,9 @@ sed -E -i "" "s/<Version>([0-9]{1,}\.)+[0-9]{1,}/<Version>$MACVERSION.8/" Bindin
 sed -E -i "" "s/<TargetFramework>net([0-9]{1,}\.)+[0-9]{1,}-maccatalyst/<TargetFramework>net8.0-maccatalyst/" Bindings/$NMSC.Mac/$NMSC.Mac.csproj
 dotnet pack Bindings/$NMSC.Mac/$NMSC.Mac.csproj --output NugetPackages --force --verbosity quiet --property WarningLevel=0 /clp:ErrorsOnly
 cd NugetPackages
-rm -rf voicemac
-unzip -n -q $NMSC.Mac.$MACVERSION.7.nupkg -d voicemac
-unzip -n -q $NMSC.Mac.$MACVERSION.8.nupkg -d voicemac
+rm -rf ${smth}mac
+unzip -n -q $NMSC.Mac.$MACVERSION.7.nupkg -d ${smth}mac
+unzip -n -q $NMSC.Mac.$MACVERSION.8.nupkg -d ${smth}mac
 rm $NMSC.Mac.$MACVERSION.7.nupkg
 rm $NMSC.Mac.$MACVERSION.8.nupkg
 cd ..
@@ -54,18 +54,19 @@ sed -E -i "" "s/<Version>([0-9]{1,}\.)+[0-9]{1,}/<Version>$ANDROIDVERSION.8/" Bi
 sed -E -i "" "s/<TargetFramework>net([0-9]{1,}\.)+[0-9]{1,}-android/<TargetFramework>net8.0-android/" Bindings/$NMSC.Android/$NMSC.Android.csproj
 dotnet pack Bindings/$NMSC.Android/$NMSC.Android.csproj --output NugetPackages --force --verbosity quiet --property WarningLevel=0 /clp:ErrorsOnly
 cd NugetPackages
-rm -rf voiceandroid
-unzip -n -q $NMSC.Android.$ANDROIDVERSION.7.nupkg -d voiceandroid
-unzip -n -q $NMSC.Android.$ANDROIDVERSION.8.nupkg -d voiceandroid
+rm -rf ${smth}android
+unzip -n -q $NMSC.Android.$ANDROIDVERSION.7.nupkg -d ${smth}android
+unzip -n -q $NMSC.Android.$ANDROIDVERSION.8.nupkg -d ${smth}android
 rm $NMSC.Android.$ANDROIDVERSION.7.nupkg
 rm $NMSC.Android.$ANDROIDVERSION.8.nupkg
 cd ..
 echo "android part nugets generated"
 cd NugetPackages
 
-cp -R voiceandroid/Readme.md voiceandroid/Readme.txt
-cp -R voicemac/Readme.md voicemac/Readme.txt
-cp -R voiceios/Readme.md voiceios/Readme.txt
+cp -R ${smth}android/Readme.md ${smth}android/Readme.txt
+cp -R ${smth}mac/Readme.md ${smth}mac/Readme.txt
+cp -R ${smth}ios/Readme.md ${smth}ios/Readme.txt
+cp -R ${smth}/Readme.md ${smth}/Readme.txt
 
 # mkdir Voice/native
 # mkdir Voice/native/lib
@@ -86,9 +87,9 @@ nuget pack $NMSC.iOS.nuspec
 nuget pack $NMSC.Mac.nuspec
 nuget pack $NMSC.nuspec
 
-rm -rf voiceandroid
-rm -rf voiceios
-rm -rf voicemac
+rm -rf ${smth}android
+rm -rf ${smth}ios
+rm -rf ${smth}mac
 
 # if  [ -z "$3" ]
 # then
